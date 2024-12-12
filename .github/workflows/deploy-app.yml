@@ -22,6 +22,10 @@ jobs:
           hugo-version: "latest" # Use the latest Hugo version
           extended: true
 
+      - name: Install PostCSS
+        run: |
+          npm install postcss postcss-cli autoprefixer # Install PostCSS and any required plugins
+          
       - name: Build the site
         run: |
           cd site  # Navigate to the 'site' directory
