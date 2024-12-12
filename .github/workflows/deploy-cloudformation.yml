@@ -32,7 +32,8 @@ jobs:
       - name: Deploy S3 Stack
         run: |
           aws cloudformation deploy \
-            --template-file infra/s3bucket.yml \
+            --template-file s3bucket.yml \
             --stack-name S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
+        working-directory: infra
