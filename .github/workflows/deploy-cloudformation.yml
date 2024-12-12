@@ -3,7 +3,7 @@ name: Deploy CloudFormation Stack
 on:
   push:
     branches:
-      - phase4 # Triggers on pushes to the phase4 branch
+      - main # Triggers on pushes to the phase4 branch
 
 jobs:
   checkout_and_setup:
