@@ -19,7 +19,8 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "latest"
+          hugo-version: "latest" # Use the latest Hugo version
+          extended: true
 
       - name: Build the site
         run: |
