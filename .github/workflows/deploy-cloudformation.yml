@@ -34,4 +34,5 @@ jobs:
           aws cloudformation deploy \
             --template-file infra/s3bucket.yml \
             --stack-name S3BucketStack \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM \
+            --region us-east-1
