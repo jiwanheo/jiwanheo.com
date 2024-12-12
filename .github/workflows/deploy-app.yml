@@ -25,16 +25,22 @@ jobs:
       - name: Install PostCSS
         run: |
           npm install postcss postcss-cli autoprefixer # Install PostCSS and any required plugins
-          
+
       - name: Build the site
         run: |
           cd site  # Navigate to the 'site' directory
           hugo  # Build the site (outputs to 'public/' by default)
 
-    #   - name: Deploy to S3
-    #     run: |
-    #       cd site  # Ensure we are in the 'site' directory
-    #       aws s3 sync out/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'out' folder to S3
+      - name: Check if S3 bucket exists
+        id: bucket_check
+        run: |
+          aws s3 ls s3://jiwanheo.com > /dev/null 2>&1 || exit 1
+
+      - name: Deploy to S3
+        if: steps.bucket_check.outcome == 'success' # Only run if bucket check succeeded
+        run: |
+          aws s3 sync public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
+
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
