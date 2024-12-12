@@ -1,0 +1,44 @@
+{{ if .Site.Data.homepage.education.enable }}
+<section class="section section--border-bottom rad-animation-group">
+    <div class="container">
+        <div class="row rad-fade-down">
+            <div class="col-12">
+                <h2 class="text-center">{{ i18n "education_title" }}</h2>
+
+                <div class="row pt-2 pt-md-4">
+                    <div class="col-12 col-sm-6 mb-4 mb-sm-0">
+                        {{ range .Site.Data.homepage.education.school }}
+                        <div class="col-12 col-sm-6 mb-4 mb-sm-0">
+                            <div class="education">
+                                <div class="education__date">{{ .year }}</div>
+                                <div class="education__title">{{ .university }}</div>
+                                <div class="education__degree">{{ .degree }}</div>
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+
+                <div class="row pt-4">
+                    {{ range .Site.Data.homepage.education.certs }}
+                        {{ $img := resources.Get .cert_pic }} <!-- Get the image resource -->
+                        {{ with $img }} <!-- Only proceed if image exists -->
+                            {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
+                        
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="certificate">
+                                    <picture>
+                                        <source srcset="{{ $imgWebp.RelPermalink }}" type="image/webp" />
+                                        <img src="{{ $img.RelPermalink }}" class="img-fluid" />
+                                    </picture>
+                                </div>
+                            </div>
+                        {{ end }}
+                    {{ end }}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,29 @@
+{{ if .Site.Data.homepage.about.enable }}
+<section class="section rad-animation-group section--border-bottom" id="about">
+  <div class="container rad-fade-down">
+    <div class="row d-flex flex-column-reverse flex-md-row">
+      <div class="col-12 my-auto my-auto">
+        <h2 class="text-center">{{ i18n "about_title" }}</h2>
+        {{ i18n "about_content" | safeHTML }}
+
+        <div class="cert-container">
+          {{ range .Site.Data.homepage.about.certs }}
+              {{ $img := resources.Get .cert_pic }} <!-- Get the image resource -->
+              {{ with $img }} <!-- Only proceed if image exists -->
+                  {{ $imgWebp := $img.Resize "200x200 webp q75 Lanczos picture" }}
+
+                  <div class="certificate">
+                    <picture>
+                        <source srcset="{{ $imgWebp.RelPermalink }}" type="image/webp" />
+                        <img src="{{ $img.RelPermalink }}" class="img-fluid" />
+                    </picture>
+                </div>
+              {{ end }}
+          {{ end }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

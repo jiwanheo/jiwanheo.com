@@ -1,0 +1,28 @@
+{{ if .Site.Data.homepage.blog.enable }}
+<section id="blog" class="section rad-animation-group">
+  <div class="container">
+    <div class="col-12">
+      <h2 class="text-center">{{ i18n "blog_title" }}</h2>
+      <div class="card-deck">
+          {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Section" "blog") }}
+          <div class="card">
+            <a href="{{ .Permalink }}" class="card-link">
+              <div class="card-header">
+                  <h3 class="card-title">{{ .Title }}</h3>
+                  <span class="card-date">{{ .Date.Format "2006-01-02" }}</span>
+              </div>
+              <div class="card-body">
+                {{ .Summary | plainify | truncate 100 }}
+              </div>
+            </a>
+          </div>
+        {{ end }}
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <a href="/blog/" class="btn btn-primary">See all blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

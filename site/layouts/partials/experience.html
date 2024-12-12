@@ -1,0 +1,79 @@
+{{ if .Site.Data.homepage.experience.enable }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const items = document.querySelectorAll('.experience-item');
+        const contents = document.querySelectorAll('.experience-content');
+
+        items.forEach(item => {
+            item.addEventListener('click', function () {
+                // Remove "active" and "show" classes
+                items.forEach(i => i.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('show'));
+
+                // Add "active" to clicked item
+                this.classList.add('active');
+
+                // Show the corresponding content
+                const target = this.getAttribute('data-target');
+                document.getElementById(target).classList.add('show');
+            });
+        });
+    });
+</script>
+
+<section id="experience" class="section-experience section rad-animation-group">
+    <div class="container">
+        <div class="col-12">
+            <h2 class="text-center">{{ i18n "experience_title" }}</h2>
+            <div class="experience-button-container">
+                <a
+                    href="{{ .Site.Data.homepage.experience.button.URL | absURL }}"
+                    class="btn btn-frameless experience-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="{{ .Site.Data.homepage.experience.button.icon }}"></i>
+                    {{ i18n "experience_button" }}
+                    <i class="icon-arrow-right"></i>
+                </a>
+
+                <a
+                    href='{{ i18n "experience_button2_url" | absURL }}'
+                    class="btn btn-frameless experience-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="{{ .Site.Data.homepage.experience.button2.icon }}"></i>
+                    {{ i18n "experience_button2" }}
+                </a>
+            </div>
+            <div class="experience-container">
+                <div class="experience-list">
+                    {{ range $index, $exp := .Site.Data.homepage.experience.experiences }}
+                    <div 
+                        class="experience-item {{ if eq $index 0 }}active{{ end }}" 
+                        data-target="experience-{{ $index }}">
+                        <h3>{{ $exp.company }}</h3>
+                        <p>{{ $exp.jobTitle }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="experience-details">
+                    {{ range $index, $exp := .Site.Data.homepage.experience.experiences }}
+                    <div 
+                        id="experience-{{ $index }}" 
+                        class="experience-content {{ if eq $index 0 }}show{{ end }}">
+                        <div class="experience-content-header">
+                            <h3>{{ $exp.jobTitle }}</h3>
+                            <span class="experience-duration">{{ $exp.duration }}</span>
+                        </div>
+                        {{ $exp.description | safeHTML }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

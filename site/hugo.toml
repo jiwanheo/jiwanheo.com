@@ -1,0 +1,92 @@
+baseURL = "https://jiwanheo.com"
+languageCode = "en"
+languageDirection = 'ltr'
+languageName = 'English'
+title = ''
+weight = 0
+
+[markup]
+  [markup.highlight]
+    noClasses = true  # Set to true if you prefer inline styles
+    style = "catppuccin-latte"  # Replace with your desired theme
+    lineNumbers = true # Show line numbers
+
+# Menus
+[menu]
+
+  # Header Menu
+  [[menu.header]]
+  name = "About"
+  URL = "#about"
+  weight = 2
+
+  [[menu.header]]
+  name = "Experience"
+  URL = "#experience"
+  weight = 3
+
+  [[menu.header]]
+  name = "Blog"
+  URL = "/blog"
+  weight = 5
+
+  [[menu.header]]
+  name = "Contact"
+  URL = "#contact"
+  weight = 6
+
+  # Footer Menu
+  [[menu.footer]]
+  name = "About"
+  URL = "#about"
+  weight = 2
+
+  [[menu.footer]]
+  name = "Experience"
+  URL = "#experience"
+  weight = 3
+
+  [[menu.footer]]
+  name = "Contact"
+  URL = "#contact"
+  weight = 4
+  
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/main.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "css/menu.scss"
+
+[params]
+
+  sections = ["showcase", "about", "education", "experience", "client-and-work", "blog", "testimonial", "contact", "newsletter"]
+
+  homepageExperienceCount = 2
+
+  # controls vercel page insights - disabled by default
+  vercelPageInsights = false
+  vercelAnalytics = false
+  
+  [params.google_analytics]
+      code = "UA-XXXXX-Y"
+      enabled = false
+  [params.google_tag_manager]
+      code = "GTM-XXXXX"
+      enabled = false
