@@ -1,0 +1,9 @@
+Resources:
+  S3ForStaticSite:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: jiwanheo.com
+      VersioningConfiguration:
+        Status: Enabled # Enable versioning if needed
+      WebsiteConfiguration:
+        IndexDocument: index.html
