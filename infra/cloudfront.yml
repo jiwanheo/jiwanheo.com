@@ -38,7 +38,7 @@ Resources:
           - jiwanheo.com
         Origins:
           - Id: S3Origin
-            DomainName: !ImportValue S3ForStaticSiteName
+            DomainName: !ImportValue S3ForStaticSiteDomainName
             S3OriginConfig:
               # AWS docs instruct to leave this field empty if using OAC instead of OAI
               OriginAccessIdentity: ""
