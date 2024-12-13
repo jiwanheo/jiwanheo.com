@@ -33,9 +33,7 @@ Resources:
                 Action:
                   - s3:GetObject
                 Resource: 
-                  - !Sub "${ImportedS3Arn}/*"
-                Parameters:
-                  ImportedS3Arn: !ImportValue S3ForStaticSiteArn
+                  - !Sub "${S3ForStaticSiteArn}/*"
 
         - PolicyName: LambdaCloudWatchLogsPolicy
           PolicyDocument:
@@ -51,6 +49,8 @@ Resources:
         - Key: Project
           Value: jiwanheo.com
 
+      Parameters:
+        S3ForStaticSiteArn: !ImportValue S3ForStaticSiteArn
 #   # Lambda Function to Handle ACM Validation
 #   CustomACMLambdaFunction:
 #     Type: AWS::Lambda::Function
