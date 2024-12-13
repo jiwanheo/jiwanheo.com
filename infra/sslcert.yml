@@ -5,13 +5,13 @@ Resources:
   CustomACMLambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
-      # AssumeRolePolicyDocument:
-      #   Version: "2012-10-17"
-      #   Statement:
-      #     - Effect: Allow
-      #       Principal:
-      #         Service: lambda.amazonaws.com
-      #       Action: sts:AssumeRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
       # Policies: # This is a list of policy documents
       #   - PolicyName: LambdaACMRoute53AccessPolicy
       #     PolicyDocument:
