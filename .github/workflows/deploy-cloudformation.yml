@@ -30,6 +30,13 @@ jobs:
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
 
+      # Step 4: Set up ACM lambda function 
+      - name: Package and Upload ACM Lambda Code
+        run: |
+          cd infra/lambda
+          zip -r acm-lambda_function.zip acm-lambda.py
+          aws s3 cp acm-lambda_function.zip s3://acm-lambda-jiwanheo.com/acm-lambda_function.zip
+
       # Step 5: Deploy SSL Certificate Stack
       - name: Deploy SSL Certificate Stack
         run: |
