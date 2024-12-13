@@ -28,6 +28,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: checkout_and_setup
     steps:
+      - name: Debug working directory without anything
+        run: |
+          pwd
+          ls -la
+      - name: Debug working directory infra
+        run: |
+          pwd
+          ls -la
+        working-directory: infra
       # Step 3: Deploy CloudFormation Stack for S3
       - name: Deploy S3 Stack
         run: |
