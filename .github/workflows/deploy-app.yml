@@ -31,11 +31,6 @@ jobs:
           cd site  # Navigate to the 'site' directory
           hugo  # Build the site (outputs to 'public/' by default)
 
-      - name: Check if S3 bucket exists
-        id: bucket_check
-        run: |
-          aws s3 ls s3://jiwanheo.com > /dev/null 2>&1 || exit 1
-
       - name: Deploy to S3
         if: steps.bucket_check.outcome == 'success' # Only run if bucket check succeeded
         run: |
