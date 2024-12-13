@@ -64,17 +64,17 @@ Resources:
       Timeout: 300
       Role: !GetAtt CustomACMLambdaExecutionRole.Arn
 
-#   # Custom ACM Certificate Resource
-#   MyACMCertificate:
-#     Type: "Custom::ACM"
-#     Properties:
-#       ServiceToken: !GetAtt CustomACMLambdaFunction.Arn
-#       DomainName: static-site.jiwanheo.xyz
-#       HostedZoneId: Z066358329E65RHIEOJXQ
-#       Region: us-east-1
+  # Custom ACM Certificate Resource
+  MyACMCertificate:
+    Type: "Custom::ACM"
+    Properties:
+      ServiceToken: !GetAtt CustomACMLambdaFunction.Arn
+      DomainName: jiwanheo.com
+      HostedZoneId: Z066358329E65RHIEOJXQ
+      Region: us-east-1
 
-# Outputs:
-#   CertificateArn:
-#     Value: !GetAtt MyACMCertificate.CertificateArn
-#     Export:
-#       Name: MySSLCertificateStack-CertificateArn
+Outputs:
+  CertificateArn:
+    Value: !GetAtt MyACMCertificate.CertificateArn
+    Export:
+      Name: MySSLCertificateStack-CertificateArn
