@@ -14,6 +14,8 @@ jobs:
       # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure full repository clone
 
       # Step 2: Configure AWS Credentials
       - name: Configure AWS credentials
@@ -32,11 +34,6 @@ jobs:
         run: |
           pwd
           ls -la
-      - name: Debug working directory infra
-        run: |
-          pwd
-          ls -la
-        working-directory: infra
       # Step 3: Deploy CloudFormation Stack for S3
       - name: Deploy S3 Stack
         run: |
@@ -45,4 +42,3 @@ jobs:
             --stack-name S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
-        working-directory: infra
