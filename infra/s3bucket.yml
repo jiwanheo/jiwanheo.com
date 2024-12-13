@@ -29,7 +29,7 @@ Outputs:
   S3ForStaticSiteDomainName:
     Value: !GetAtt S3ForStaticSite.DomainName
     Export:
-      Name: S3ForStaticSiteName # This name will be referenced by other stacks
+      Name: S3ForStaticSiteDomainName # This name will be referenced by other stacks
   S3ForACMLambdaName:
     Description: The domain name of the S3 bucket for the ACM lambda code
     Value: !Ref S3ForACMLambda
