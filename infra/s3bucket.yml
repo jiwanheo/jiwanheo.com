@@ -26,8 +26,8 @@ Outputs:
     Value: !GetAtt S3ForStaticSite.Arn
     Export:
       Name: S3ForStaticSiteArn
-  S3ForStaticSiteName:
-    Value: !Ref S3ForStaticSite
+  S3ForStaticSiteDomainName:
+    Value: !GetAtt S3ForStaticSite.DomainName
     Export:
       Name: S3ForStaticSiteName # This name will be referenced by other stacks
   S3ForACMLambdaName:
