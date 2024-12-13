@@ -12,40 +12,40 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole
-      # Policies: # This is a list of policy documents
-      #   - PolicyName: LambdaACMRoute53AccessPolicy
-      #     PolicyDocument:
-      #       Version: "2012-10-17"
-      #       Statement:
-      #         - Effect: Allow
-      #           Action:
-      #             - acm:RequestCertificate
-      #             - acm:DescribeCertificate
-      #             - acm:DeleteCertificate
-      #             - acm:ListCertificates
-      #             - route53:ChangeResourceRecordSets
-      #           Resource: "*"
-      #   - PolicyName: LambdaS3AccessPolicy
-      #     PolicyDocument:
-      #       Version: "2012-10-17"
-      #       Statement:
-      #         - Effect: Allow
-      #           Action:
-      #             - s3:GetObject
-      #           Resource: 
-      #             - !Sub "arn:aws:s3:::${S3BucketArn}/*"
-      #             - !ImportValue S3BucketArnExport
+      Policies: # This is a list of policy documents
+        - PolicyName: LambdaACMRoute53AccessPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - acm:RequestCertificate
+                  - acm:DescribeCertificate
+                  - acm:DeleteCertificate
+                  - acm:ListCertificates
+                  - route53:ChangeResourceRecordSets
+                Resource: "*"
+        - PolicyName: LambdaS3AccessPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: 
+                  - !Sub "arn:aws:s3:::${S3BucketArn}/*"
+                  - !ImportValue S3BucketArnExport
 
-      #   - PolicyName: LambdaCloudWatchLogsPolicy
-      #     PolicyDocument:
-      #       Version: "2012-10-17"
-      #       Statement:
-      #         - Effect: Allow
-      #           Action:
-      #             - logs:CreateLogGroup
-      #             - logs:CreateLogStream
-      #             - logs:PutLogEvents
-      #           Resource: "arn:aws:logs:*:*:*"
+        - PolicyName: LambdaCloudWatchLogsPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "arn:aws:logs:*:*:*"
       Tags:
         - Key: Project
           Value: jiwanheo.com
