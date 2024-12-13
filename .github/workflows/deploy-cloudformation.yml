@@ -26,6 +26,14 @@ jobs:
         run: |
           aws cloudformation deploy \
             --template-file infra/s3bucket.yml \
-            --stack-name S3BucketStack \
+            --stack-name jiwanheo.com-S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
+
+      # Step 5: Deploy SSL Certificate Stack
+      - name: Deploy SSL Certificate Stack
+        run: |
+          aws cloudformation deploy \
+            --template-file infra/sslcert.yml \
+            --stack-name jiwanheo.com-SSLCertificateStack \
+            --capabilities CAPABILITY_NAMED_IAM
