@@ -32,7 +32,6 @@ jobs:
           hugo  # Build the site (outputs to 'public/' by default)
 
       - name: Deploy to S3
-        if: steps.bucket_check.outcome == 'success' # Only run if bucket check succeeded
         run: |
           aws s3 sync public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
 
