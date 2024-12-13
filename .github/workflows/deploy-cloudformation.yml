@@ -14,13 +14,6 @@ jobs:
       # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Ensure full repository clone
-
-      - name: Debug aa
-        run: |
-          pwd
-          ls -R
 
       # Step 2: Configure AWS Credentials
       - name: Configure AWS credentials
@@ -31,14 +24,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1 # Replace with your desired region
 
+      # Step 3: Upload repository as artifact
+      - name: Upload repository
+        uses: actions/upload-artifact@v3
+        with:
+          name: repo-files
+          path: .
+
   deploy_s3:
     runs-on: ubuntu-latest
     needs: checkout_and_setup
     steps:
+      # Step 1: Download artifact
+      - name: Download repository artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: repo-files
+
       - name: Debug working directory without anything
         run: |
           pwd
           ls -R
+          
       # Step 3: Deploy CloudFormation Stack for S3
       - name: Deploy S3 Stack
         run: |
