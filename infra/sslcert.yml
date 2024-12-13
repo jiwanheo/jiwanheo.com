@@ -1,8 +1,7 @@
 Description: Deploy ACM Certificate with DNS Validation
 
 Resources:
-  S3ForStaticSiteArn: !ImportValue S3ForStaticSiteArn
-  
+
   # IAM Role for the Lambda Function
   CustomACMLambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -34,8 +33,9 @@ Resources:
               - Effect: Allow
                 Action:
                   - s3:GetObject
-                Resource: 
-                  - !Sub "${S3ForStaticSiteArn}/*"
+                Resource: !Sub
+                  - "${S3ForStaticSiteArn}/*"
+                  - S3ForStaticSiteArn: !ImportValue S3ForStaticSiteArn
 
         - PolicyName: LambdaCloudWatchLogsPolicy
           PolicyDocument:
