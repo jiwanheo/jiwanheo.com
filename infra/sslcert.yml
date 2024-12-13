@@ -33,8 +33,8 @@ Resources:
                 Action:
                   - s3:GetObject
                 Resource: 
-                  - !Sub "arn:aws:s3:::${S3BucketArn}/*"
-                  - !ImportValue S3BucketArnExport
+                  - !Sub "arn:aws:s3:::${S3ForStaticSiteArn}/*"
+                  - !ImportValue S3ForStaticSiteArn
 
         - PolicyName: LambdaCloudWatchLogsPolicy
           PolicyDocument:
