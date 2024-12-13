@@ -34,11 +34,11 @@ jobs:
       - name: Debugging where i am
         run: |
           pwd
-          ls
-          
+          ls site
+
       - name: Deploy to S3
         run: |
-          aws s3 sync public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
+          aws s3 sync site/public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
