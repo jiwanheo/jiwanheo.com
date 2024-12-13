@@ -26,7 +26,7 @@ jobs:
         run: |
           aws cloudformation deploy \
             --template-file infra/s3bucket.yml \
-            --stack-name jiwanheo.com-S3BucketStack \
+            --stack-name jiwanheo_com-S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
 
@@ -35,5 +35,5 @@ jobs:
         run: |
           aws cloudformation deploy \
             --template-file infra/sslcert.yml \
-            --stack-name jiwanheo.com-SSLCertificateStack \
+            --stack-name jiwanheo_com-SSLCertificateStack \
             --capabilities CAPABILITY_NAMED_IAM
