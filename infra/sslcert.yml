@@ -1,6 +1,8 @@
 Description: Deploy ACM Certificate with DNS Validation
 
 Resources:
+  S3ForStaticSiteArn: !ImportValue S3ForStaticSiteArn
+  
   # IAM Role for the Lambda Function
   CustomACMLambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -49,8 +51,7 @@ Resources:
         - Key: Project
           Value: jiwanheo.com
 
-      Parameters:
-        S3ForStaticSiteArn: !ImportValue S3ForStaticSiteArn
+      
 #   # Lambda Function to Handle ACM Validation
 #   CustomACMLambdaFunction:
 #     Type: AWS::Lambda::Function
