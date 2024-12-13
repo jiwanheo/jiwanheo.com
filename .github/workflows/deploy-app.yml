@@ -31,6 +31,11 @@ jobs:
           cd site  # Navigate to the 'site' directory
           hugo  # Build the site (outputs to 'public/' by default)
 
+      - name: Debugging where i am
+        run: |
+          pwd
+          ls
+          
       - name: Deploy to S3
         run: |
           aws s3 sync public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
