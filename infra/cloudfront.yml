@@ -29,9 +29,6 @@ Resources:
         OriginAccessControlOriginType: "s3"
         SigningBehavior: "always"
         SigningProtocol: "sigv4" # Use AWS Signature Version 4 (sigv4)
-      Tags:
-        - Key: Project
-          Value: jiwanheo.com
 
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution

@@ -17,6 +17,9 @@ Resources:
       BucketName: acm-lambda-jiwanheo.com
       VersioningConfiguration:
         Status: Enabled # Enable versioning if needed
+      Tags:
+        - Key: Project
+          Value: jiwanheo.com
 Outputs:
   S3ForStaticSiteArn:
     Description: The ARN of the S3 bucket for the static site
