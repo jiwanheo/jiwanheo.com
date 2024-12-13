@@ -38,7 +38,7 @@ jobs:
       - name: Debug working directory without anything
         run: |
           pwd
-          ls -la
+          ls -R
       # Step 3: Deploy CloudFormation Stack for S3
       - name: Deploy S3 Stack
         run: |
