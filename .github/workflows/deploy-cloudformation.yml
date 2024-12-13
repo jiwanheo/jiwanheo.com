@@ -17,6 +17,11 @@ jobs:
         with:
           fetch-depth: 0 # Ensure full repository clone
 
+      - name: Debug aa
+        run: |
+          pwd
+          ls -R
+
       # Step 2: Configure AWS Credentials
       - name: Configure AWS credentials
         id: configure_aws
@@ -38,7 +43,7 @@ jobs:
       - name: Deploy S3 Stack
         run: |
           aws cloudformation deploy \
-            --template-file s3bucket.yml \
+            --template-file infra/s3bucket.yml \
             --stack-name S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --region us-east-1
