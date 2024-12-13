@@ -23,8 +23,8 @@ Outputs:
     Value: !GetAtt S3ForStaticSite.Arn
     Export:
       Name: S3ForStaticSiteArn
-  S3ForACMLambdaArn:
-    Description: The ARN of the S3 bucket for the ACM lambda code
-    Value: !GetAtt S3ForACMLambda.Arn
+  S3ForACMLambdaName:
+    Description: The domain name of the S3 bucket for the ACM lambda code
+    Value: !Ref S3ForACMLambda
     Export:
-      Name: S3ForACMLambdaArn
+      Name: S3ForACMLambdaName

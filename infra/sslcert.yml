@@ -59,10 +59,8 @@ Resources:
       Handler: acm-lambda.lambda_handler
       Runtime: python3.13
       Code:
-        S3Bucket: !Sub
-          - "${S3ForACMLambdaArn}/*"
-          - S3ForACMLambdaArn: !ImportValue S3ForACMLambdaArn
-        S3Key: lambda_function.zip
+        S3Bucket: !ImportValue S3ForACMLambdaName
+        S3Key: acm-lambda_function.zip
       Timeout: 300
       Role: !GetAtt CustomACMLambdaExecutionRole.Arn
 
