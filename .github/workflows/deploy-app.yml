@@ -19,7 +19,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest" # Use the latest Hugo version
+          hugo-version: "0.139.4" # Use the latest Hugo version
           extended: true
 
       - name: Install PostCSS
