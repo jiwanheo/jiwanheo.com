@@ -7,6 +7,9 @@ Resources:
         Status: Enabled # Enable versioning if needed
       WebsiteConfiguration:
         IndexDocument: index.html
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
       Tags:
         - Key: Project
           Value: jiwanheo.com

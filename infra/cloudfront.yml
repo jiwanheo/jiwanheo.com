@@ -30,6 +30,22 @@ Resources:
         SigningBehavior: "always"
         SigningProtocol: "sigv4" # Use AWS Signature Version 4 (sigv4)
 
+  BlogCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Properties:
+      CachePolicyConfig:
+        Name: "BlogCachePolicy"
+        DefaultTTL: 86400
+        MinTTL: 0
+        MaxTTL: 31536000
+        ParametersInCacheKeyAndForwardedToOrigin:
+          CookiesConfig:
+            CookieBehavior: none
+          HeadersConfig:
+            HeaderBehavior: none
+          QueryStringsConfig:
+            QueryStringBehavior: none
+
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -57,6 +73,14 @@ Resources:
             QueryString: false # Do not forward query strings to S3
             Cookies:
               Forward: none # Do not forward cookies
+        CacheBehaviors:
+        - PathPattern: "/blog/*"
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: !Ref BlogCachePolicy
+          AllowedMethods:
+            - GET
+            - HEAD
         ViewerCertificate:
           AcmCertificateArn: !ImportValue MySSLCertificateStack-CertificateArn
           SslSupportMethod: sni-only
