@@ -34,7 +34,7 @@ Outputs:
     Export:
       Name: S3ForStaticSiteBucketName 
   S3ForStaticSiteDomainName:
-    Value: !Sub "${S3ForStaticSite.WebsiteURL}"
+    Value: !GetAtt S3ForStaticSite.DomainName
     Export:
       Name: S3ForStaticSiteDomainName 
   S3ForACMLambdaName:
