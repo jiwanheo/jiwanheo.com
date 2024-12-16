@@ -41,6 +41,7 @@ Resources:
         ParametersInCacheKeyAndForwardedToOrigin:
           CookiesConfig:
             CookieBehavior: none
+          EnableAcceptEncodingGzip: true
           HeadersConfig:
             HeaderBehavior: none
           QueryStringsConfig:
