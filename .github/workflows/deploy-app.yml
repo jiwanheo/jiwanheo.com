@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2 # Checkout the code from your repository
 
       - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "latest" # Use the latest Hugo version
           extended: true
