@@ -52,6 +52,6 @@ jobs:
         run: |
           aws cloudformation deploy \
             --template-file infra/cloudfront.yml \
-            --stack-name CloudFrontStack \
+            --stack-name jiwanheoCom-CloudFrontStack \
             --capabilities CAPABILITY_NAMED_IAM \
             --tags Project=jiwanheo.com

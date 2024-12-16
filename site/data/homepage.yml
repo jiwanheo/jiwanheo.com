@@ -97,6 +97,8 @@ contact:
   enable: true
   form:
     action: "#"
+    action: "https://formspree.io/f/xbljvodq"
+    method: "POST"
   button:
     icon: "icon-email"
   socialLinks:
