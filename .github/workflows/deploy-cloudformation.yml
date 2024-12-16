@@ -28,7 +28,8 @@ jobs:
             --template-file infra/s3bucket.yml \
             --stack-name jiwanheoCom-S3BucketStack \
             --capabilities CAPABILITY_NAMED_IAM \
-            --region us-east-1
+            --region us-east-1 \
+            --tags Key=Project ,Value=jiwanheo.com
 
       # Step 4: Set up ACM lambda function 
       - name: Package and Upload ACM Lambda Code
@@ -43,7 +44,8 @@ jobs:
           aws cloudformation deploy \
             --template-file infra/sslcert.yml \
             --stack-name jiwanheoCom-SSLCertificateStack \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM \
+            --tags Key=Project ,Value=jiwanheo.com
             
       # Step 6: Deploy CloudFront Stack
       - name: Deploy CloudFront Stack
@@ -51,4 +53,5 @@ jobs:
           aws cloudformation deploy \
             --template-file infra/cloudfront.yml \
             --stack-name CloudFrontStack \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM \
+            --tags Key=Project ,Value=jiwanheo.com
