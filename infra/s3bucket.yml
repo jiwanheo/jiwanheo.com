@@ -37,6 +37,10 @@ Outputs:
     Value: !GetAtt S3ForStaticSite.DomainName
     Export:
       Name: S3ForStaticSiteDomainName 
+  S3ForStaticSiteWebsiteHostingDomainName:
+    Value: !Sub "${S3ForStaticSite.WebsiteURL}"
+    Export:
+      Name: S3ForStaticSiteDomainName
   S3ForACMLambdaName:
     Description: The domain name of the S3 bucket for the ACM lambda code
     Value: !Ref S3ForACMLambda
