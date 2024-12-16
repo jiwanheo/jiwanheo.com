@@ -92,7 +92,7 @@ Resources:
   CloudFrontSiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: !ImportValue StaticSiteS3BucketName
+      Bucket: !ImportValue S3ForStaticSiteDomainName
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -103,7 +103,7 @@ Resources:
             Action: "s3:GetObject"
             Resource: !Sub
               - "arn:aws:s3:::${BucketName}/*"
-              - BucketName: !ImportValue StaticSiteS3BucketName
+              - BucketName: !ImportValue S3ForStaticSiteDomainName
             Condition:
               StringEquals:
                 "AWS:SourceArn": !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}"
