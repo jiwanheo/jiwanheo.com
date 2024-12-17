@@ -30,23 +30,6 @@ Resources:
         SigningBehavior: "always"
         SigningProtocol: "sigv4" # Use AWS Signature Version 4 (sigv4)
 
-  BlogCachePolicy:
-    Type: AWS::CloudFront::CachePolicy
-    Properties:
-      CachePolicyConfig:
-        Name: "BlogCachePolicy"
-        DefaultTTL: 86400
-        MinTTL: 0
-        MaxTTL: 31536000
-        ParametersInCacheKeyAndForwardedToOrigin:
-          CookiesConfig:
-            CookieBehavior: none
-          EnableAcceptEncodingGzip: true
-          HeadersConfig:
-            HeaderBehavior: none
-          QueryStringsConfig:
-            QueryStringBehavior: none
-
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
