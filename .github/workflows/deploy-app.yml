@@ -34,7 +34,14 @@ jobs:
       - name: Deploy to S3
         run: |
           aws s3 sync site/public/ s3://jiwanheo.com --exact-timestamps --delete  # Deploy the 'public' folder to S3
-
+        
+      # Work-around to CloudFront not serving index.html file under subdirectories.   
+      - name: Duplicate index.html in subdirectories
+        run: |
+          for o in $(aws s3api list-objects --bucket jiwanheo.com --query "Contents[?contains(Key, '/index.html')].Key" --output text); do
+            n=$(echo ${o} | sed -e "s/\/index.html//g")
+            aws s3 cp s3://jiwanheo.com/${o} s3://jiwanheo.com/${n}
+          done
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
