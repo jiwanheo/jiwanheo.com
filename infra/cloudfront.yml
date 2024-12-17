@@ -57,14 +57,6 @@ Resources:
             QueryString: false # Do not forward query strings to S3
             Cookies:
               Forward: none # Do not forward cookies
-        CacheBehaviors:
-        - PathPattern: "/blog/*"
-          TargetOriginId: S3Origin
-          ViewerProtocolPolicy: redirect-to-https
-          CachePolicyId: !Ref BlogCachePolicy
-          AllowedMethods:
-            - GET
-            - HEAD
         ViewerCertificate:
           AcmCertificateArn: !ImportValue MySSLCertificateStack-CertificateArn
           SslSupportMethod: sni-only
