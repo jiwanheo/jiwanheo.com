@@ -9,7 +9,7 @@ Resources:
         IndexDocument: index.html
       OwnershipControls:
         Rules:
-          - ObjectOwnership: BucketOwnerEnforced
+          - ObjectOwnership: BucketOwnerPreferred
       Tags:
         - Key: Project
           Value: jiwanheo.com
